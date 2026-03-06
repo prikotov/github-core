@@ -2,10 +2,10 @@
 name: github-core
 description: Библиотека и каталог skills для GitHub API
 license: MIT
-compatibility: opencode
+compatibility: any
 ---
 
-## Доступные skills
+## Доступные модули
 
 ### github-traffic
 Просмотры и клоны репозиториев:
@@ -32,32 +32,26 @@ compatibility: opencode
 
 ## Установка
 
-1. Создайте файл `.opencode/skills/github-core/config.json`:
+```bash
+git clone https://github.com/prikotov/github-core.git
+```
+
+Создайте `config.json`:
 
 ```json
 {
-  "token": "ghp_xxxxxxxxxxxxxxxxxxxx",
+  "token": "ghp_xxx",
   "default_repo": "username/repo",
   "repos": {
-    "my-project": "username/my-project",
-    "another": "username/another-repo"
+    "my-project": "username/my-project"
   }
 }
 ```
 
-2. Получите GitHub Personal Access Token:
-   - https://github.com/settings/tokens
-   - Права: `repo` (для приватных) или `public_repo` (для публичных)
-
-3. Добавьте в `.gitignore`:
-```
-.opencode/skills/github-core/config.json
-```
+Токен: https://github.com/settings/tokens (права: `public_repo` или `repo`)
 
 ---
 
 ## Формат отчётов
 
-Отчёты сохраняются в `github_reports/YYYY-MM-DD/`:
-- CSV для данных
-- MD для просмотра
+`github_reports/YYYY-MM-DD/`: CSV + MD
