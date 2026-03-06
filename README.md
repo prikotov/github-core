@@ -1,12 +1,22 @@
-# GitHub Skills для opencode
+# GitHub Skills для AI-агентов
 
-Набор skills для получения статистики из GitHub API.
+Набор CLI-инструментов для получения статистики из GitHub API. Работают с любыми AI-агентами: opencode, Cursor, Claude, GPT и др.
 
 ## Установка
 
-### 1. Создайте конфигурационный файл
+### 1. Клонирование
 
-Создайте файл `.opencode/skills/github-core/config.json`:
+```bash
+git clone https://github.com/prikotov/github-core.git
+git clone https://github.com/prikotov/github-traffic.git
+git clone https://github.com/prikotov/github-referrers.git
+git clone https://github.com/prikotov/github-paths.git
+git clone https://github.com/prikotov/github-stars.git
+```
+
+### 2. Конфигурация
+
+Создайте `config.json` в папке `github-core`:
 
 ```json
 {
@@ -19,56 +29,52 @@
 }
 ```
 
-### 2. Получите GitHub Personal Access Token
+### 3. GitHub Token
 
-1. Перейдите на https://github.com/settings/tokens
-2. Нажмите "Generate new token (classic)"
-3. Выберите права:
-   - `public_repo` — для публичных репозиториев
-   - `repo` — для приватных репозиториев
-4. Скопируйте токен в `config.json`
+1. https://github.com/settings/tokens
+2. "Generate new token (classic)"
+3. Права: `public_repo` или `repo`
 
-### 3. Добавьте в .gitignore
+### 4. Требования
 
-```gitignore
-.opencode/skills/github-core/config.json
-```
+- PHP 7.4+ с cURL
+- Добавьте `config.json` в `.gitignore`
 
-## Доступные skills
+## Доступные команды
 
 ### github-traffic
 Просмотры и клоны репозиториев за 14 дней.
 
 ```bash
-php .opencode/skills/github-traffic/traffic.php
-php .opencode/skills/github-traffic/traffic.php --repo my-project
-php .opencode/skills/github-traffic/traffic.php -t views -f summary
+php github-traffic/traffic.php
+php github-traffic/traffic.php --repo my-project
+php github-traffic/traffic.php -t views -f summary
 ```
 
 ### github-referrers
 Источники трафика и популярные пути.
 
 ```bash
-php .opencode/skills/github-referrers/referrers.php
-php .opencode/skills/github-referrers/referrers.php -t referrers -l 10
+php github-referrers/referrers.php
+php github-referrers/referrers.php -t referrers -l 10
 ```
 
 ### github-paths
 Популярные страницы репозитория.
 
 ```bash
-php .opencode/skills/github-paths/paths.php
-php .opencode/skills/github-paths/paths.php -l 50 --sort unique
+php github-paths/paths.php
+php github-paths/paths.php -l 50 --sort unique
 ```
 
 ### github-stars
 Динамика звёзд и сравнение репозиториев.
 
 ```bash
-php .opencode/skills/github-stars/stars.php
-php .opencode/skills/github-stars/stars.php --days 60
-php .opencode/skills/github-stars/stars.php --top 20
-php .opencode/skills/github-stars/stars.php -c repo1,repo2
+php github-stars/stars.php
+php github-stars/stars.php --days 60
+php github-stars/stars.php --top 20
+php github-stars/stars.php -c repo1,repo2
 ```
 
 ## Формат отчётов
