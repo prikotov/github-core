@@ -1,0 +1,8 @@
+{
+    "token": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "default_repo": "username/repository",
+    "repos": {
+        "my-project": "username/my-project",
+        "another": "username/another-repo"
+    }
+}
