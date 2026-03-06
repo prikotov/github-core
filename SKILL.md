@@ -30,28 +30,6 @@ compatibility: any
 
 ---
 
-## Установка
-
-```bash
-git clone https://github.com/prikotov/github-core.git
-```
-
-Создайте `config.json`:
-
-```json
-{
-  "token": "ghp_xxx",
-  "default_repo": "username/repo",
-  "repos": {
-    "my-project": "username/my-project"
-  }
-}
-```
-
-Токен: https://github.com/settings/tokens (права: `public_repo` или `repo`)
-
----
-
 ## Формат отчётов
 
 `github_reports/YYYY-MM-DD/`: CSV + MD
