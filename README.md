@@ -41,7 +41,7 @@ git clone https://github.com/prikotov/github-core.git .opencode/skills/github-co
 ### 3. Создайте конфигурацию
 
 ```bash
-cp github_config.example.json github_config.json
+cp .opencode/skills/github-core/github_config.example.json ./github_config.json
 ```
 
 Заполните:
