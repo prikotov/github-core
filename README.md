@@ -41,7 +41,7 @@ git clone https://github.com/prikotov/github-core.git .opencode/skills/github-co
 ### 3. Создайте конфигурацию
 
 ```bash
-cp .opencode/skills/github-core/config.example.json .opencode/skills/github-core/config.json
+cp github_config.example.json github_config.json
 ```
 
 Заполните:
@@ -71,16 +71,16 @@ git clone https://github.com/prikotov/github-stars.git .opencode/skills/github-s
 
 ```
 your-project/
-├── .opencode/skills/github-core/config.json  # Конфиг (создаётся вручную)
-├── github_reports/                           # Создаётся автоматически при запуске отчёта
-│   └── YYYY-MM-DD/                           # Папка с отчётами за день
-│       └── github_*                          # Файлы отчётов
+├── github_config.json          # Конфиг (создаётся вручную в корне проекта)
+├── github_reports/              # Создаётся автоматически при запуске отчёта
+│   └── YYYY-MM-DD/              # Папка с отчётами за день
+│       └── github_*             # Файлы отчётов
 └── .opencode/skills/
-    ├── github-core/                          # Библиотека
-    ├── github-traffic/                       # Просмотры и клоны
-    ├── github-referrers/                     # Источники трафика
-    ├── github-paths/                         # Популярные страницы
-    └── github-stars/                         # Динамика звёзд
+    ├── github-core/             # Библиотека
+    ├── github-traffic/          # Просмотры и клоны
+    ├── github-referrers/        # Источники трафика
+    ├── github-paths/            # Популярные страницы
+    └── github-stars/            # Динамика звёзд
 ```
 
 ## Безопасность
@@ -88,7 +88,7 @@ your-project/
 GitHubClient автоматически защищает конфиденциальные данные от случайной публикации в git. При первом запуске он проверяет `.gitignore` и напоминает добавить недостающие записи.
 
 Защищаемые файлы:
-- `.opencode/skills/github-core/config.json` — токен и список репозиториев
+- `github_config.json` — токен и список репозиториев
 - `github_reports/` — папка с отчётами
 
 ## Создание нового skill

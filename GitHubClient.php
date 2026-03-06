@@ -77,23 +77,21 @@ class GitHubClient
     
     public static function loadConfig(): array
     {
-        $configFile = __DIR__ . '/config.json';
+        $configFile = getcwd() . '/github_config.json';
         
         if (!file_exists($configFile)) {
             throw new Exception(
                 "Файл конфигурации не найден.\n" .
-                "Создайте .opencode/skills/github-core/config.json:\n" .
-                '{' . "\n" .
-                '  "token": "ghp_xxx",' . "\n" .
-                '  "default_repo": "username/repo"' . "\n" .
-                '}'
+                "Создайте github_config.json в корне проекта:\n" .
+                "  cp github_config.example.json github_config.json\n" .
+                "И заполните токен и репозитории."
             );
         }
         
         $config = json_decode(file_get_contents($configFile), true);
         
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception("Ошибка в config.json: " . json_last_error_msg());
+            throw new Exception("Ошибка в github_config.json: " . json_last_error_msg());
         }
         
         return $config;
@@ -118,8 +116,8 @@ class GitHubClient
     
     public static function checkGitignore(): void
     {
-        $gitignorePath = dirname(__DIR__, 4) . '/.gitignore';
-        $configPattern = '.opencode/skills/github-core/config.json';
+        $gitignorePath = getcwd() . '/.gitignore';
+        $configPattern = 'github_config.json';
         
         if (!file_exists($gitignorePath)) {
             return;
@@ -135,7 +133,7 @@ class GitHubClient
     
     public static function createReportDir(): string
     {
-        $baseDir = dirname(__DIR__, 4) . '/github_reports';
+        $baseDir = getcwd() . '/github_reports';
         
         if (!is_dir($baseDir)) {
             mkdir($baseDir, 0755, true);
